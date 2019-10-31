@@ -31,6 +31,7 @@ ul {
 	justify-content: space-evenly;
 	padding: 0;
 }
+
 li {
 	width: calc(46vw - 8px);
 	max-width: 400px;
@@ -38,6 +39,7 @@ li {
 	margin: 2vw;
 	box-sizing: border-box;
 }
+
 a {
 	width: 100%;
 	height: 100%;
@@ -49,10 +51,10 @@ a {
 	border: 2px solid #ddd;
 	font-size: 4vw;
 }
+
 a:hover {
 	text-decoration: none;
 	background: #ddd;
 	border-color: #aaa;
-
 }
 </style>

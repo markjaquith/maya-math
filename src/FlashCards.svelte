@@ -27,7 +27,7 @@ function newProblem() {
 
 function round(num, power = 4) {
 	const multiplier = Math.pow(10, power);
-	return Math.round( num * multiplier + Number.EPSILON ) / multiplier;
+	return Math.round((num + Number.EPSILON) * multiplier ) / multiplier;
 }
 
 function fraction([numerator, denominator]) {
@@ -69,13 +69,14 @@ function pickRandom(items) {
 * {
 	text-align: center;
 }
+
 main {
 	width: 100%;
 	height: 100%;
 }
 
 h2 {
-  background: #ddd;
+	background: #ddd;
 	color:#999;
 	margin: 0 1em;
 	padding: 0.5em;
