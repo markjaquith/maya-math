@@ -2,6 +2,7 @@
 import numbers from './numbers';
 import FractionCard from './FractionCard.svelte';
 import ValueCard from './ValueCard.svelte';
+import Card from './Card.svelte';
 export let exercise;
 let showingAnswer = false;
 $: if (exercise) { showingAnswer = false; }
@@ -11,7 +12,6 @@ $: [numerator, denominator] = problem;
 $: typeToShow = showingAnswer ? to : from;
 
 function next() {
-	console.log('next');
 	if (showingAnswer) {
 		newProblem();
 	}
@@ -48,20 +48,19 @@ function pickRandom(items) {
 </script>
 
 <main on:click={next}>
-{#if showingAnswer}
-	<h1>The Answer</h1>
-	<h2>Tap anywhere for next card</h2>
-{:else}
-	<h1>Convert the&nbsp;{from} to&nbsp;a&nbsp;{to}</h1>
-	<h2>Tap anywhere to see answer</h2>
-{/if}
 
 {#if typeToShow === 'fraction'}
-	<FractionCard {numerator} {denominator} />
+	<Card {showingAnswer} {from} {to}>
+		<FractionCard {numerator} {denominator} />
+	</Card>
 {:else if typeToShow === 'percent'}
-	<ValueCard value={percent(problem)} suffix="%" />
+	<Card {showingAnswer} {from} {to}>
+		<ValueCard value={percent(problem)} suffix="%" />
+	</Card>
 {:else if typeToShow === 'decimal'}
-	<ValueCard value={decimal(problem)} />
+	<Card {showingAnswer} {from} {to}>
+		<ValueCard value={decimal(problem)} />
+	</Card>
 {/if}
 </main>
 
@@ -73,12 +72,5 @@ function pickRandom(items) {
 main {
 	width: 100%;
 	height: 100%;
-}
-
-h2 {
-	background: #ddd;
-	color:#999;
-	margin: 0 1em;
-	padding: 0.5em;
 }
 </style>
